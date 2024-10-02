@@ -203,7 +203,8 @@ async def signup(request: Request, response: Response, form_data: SignupForm):
             )
 
     if request.app.state.config.WEBUI_EMAIL_DOMAIN_WHITELIST is not None:
-        if not validate_email_domain(form_data.email.lower(), request.app.state.config.WEBUI_EMAIL_DOMAIN_WHITELIST):
+        domain_whitelists = request.app.state.config.WEBUI_EMAIL_DOMAIN_WHITELIST.split(';')
+        if not validate_email_domain(form_data.email.lower(), domain_whitelists):
             raise HTTPException(
                 status.HTTP_400_BAD_REQUEST, detail=ERROR_MESSAGES.INVALID_EMAIL_DOMAIN
             )
