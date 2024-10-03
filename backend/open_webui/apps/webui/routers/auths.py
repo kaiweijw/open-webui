@@ -22,7 +22,11 @@ from open_webui.env import (
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import Response
 from pydantic import BaseModel
-from open_webui.utils.misc import parse_duration, validate_email_domain, validate_email_format
+from open_webui.utils.misc import (
+    parse_duration,
+    validate_email_domain,
+    validate_email_format,
+)
 from open_webui.utils.utils import (
     create_api_key,
     create_token,
@@ -203,7 +207,9 @@ async def signup(request: Request, response: Response, form_data: SignupForm):
             )
 
     if request.app.state.config.WEBUI_EMAIL_DOMAIN_WHITELIST is not None:
-        domain_whitelists = request.app.state.config.WEBUI_EMAIL_DOMAIN_WHITELIST.split(';')
+        domain_whitelists = request.app.state.config.WEBUI_EMAIL_DOMAIN_WHITELIST.split(
+            ";"
+        )
         if not validate_email_domain(form_data.email.lower(), domain_whitelists):
             raise HTTPException(
                 status.HTTP_400_BAD_REQUEST, detail=ERROR_MESSAGES.INVALID_EMAIL_DOMAIN
