@@ -322,6 +322,12 @@ async def add_user(form_data: AddUserForm, user=Depends(get_admin_user)):
 @router.get("/admin/details")
 async def get_admin_details(request: Request, user=Depends(get_current_user)):
     if request.app.state.config.SHOW_ADMIN_DETAILS:
+        if request.app.state.config.WEBUI_ADMIN_DETAILS is not None:
+            return {
+                "name": request.app.state.config.WEBUI_ADMIN_DETAILS,
+                "email": "",
+            }
+
         admin_email = request.app.state.config.ADMIN_EMAIL
         admin_name = None
 

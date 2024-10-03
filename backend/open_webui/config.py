@@ -670,6 +670,10 @@ WEBUI_EMAIL_DOMAIN_WHITELIST = PersistentConfig(
     "WEBUI_EMAIL_DOMAIN_WHITELIST", "email_domain.whitelist", os.environ.get("WEBUI_EMAIL_DOMAIN_WHITELIST", None)
 )
 
+WEBUI_ADMIN_DETAILS = PersistentConfig(
+    "WEBUI_ADMIN_DETAILS", "ui.admin_details", os.environ.get("WEBUI_ADMIN_DETAILS", None)
+)
+
 ENABLE_LOGIN_FORM = PersistentConfig(
     "ENABLE_LOGIN_FORM",
     "ui.ENABLE_LOGIN_FORM",
