@@ -58,7 +58,7 @@
 							v{WEBUI_VERSION}
 						</Tooltip>
 
-						<a
+						<!-- <a
 							href="https://github.com/open-webui/open-webui/releases/tag/v{version.latest}"
 							target="_blank"
 						>
@@ -67,17 +67,17 @@
 								: updateAvailable
 									? `(v${version.latest} ${$i18n.t('available!')})`
 									: $i18n.t('(latest)')}
-						</a>
+						</a> -->
 					</div>
 
-					<button
+					<!-- <button
 						class=" underline flex items-center space-x-1 text-xs text-gray-500 dark:text-gray-500"
 						on:click={() => {
 							showChangelog.set(true);
 						}}
 					>
 						<div>{$i18n.t("See what's new")}</div>
-					</button>
+					</button> -->
 				</div>
 
 				<!-- <button
